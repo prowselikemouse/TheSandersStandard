@@ -5,7 +5,9 @@ newsOutput.apiUrl = 'https://webhose.io/search';
 
 //array of all sites
 
-var siteArray = ['huffingtonpost.com', 'nytimes.com', 'npr.org', 'c-span.org', 'economist.com', 'wsj.com', 'bbc.co.uk', 'salon.com', 'buzzfeed.com', 'theatlantic.com', 'theguardian.com', 'washingtonpost.com', 'msnbc.com', 'bloomberg.com', 'newyorker.com', 'vox.com', 'slate.com', 'reuters.com', 'therealnews.com', 'news.google.com', 'news.yahoo.com', 'wikinews.com', 'alternet.com', 'dailykos.com', 'independent.co.uk', 'time.com'];
+	// filter articles from certain sites
+var siteArray = ['huffingtonpost.com', 'npr.org', 'c-span.org', 'economist.com', 'wsj.com', 'bbc.co.uk', 'salon.com', 'buzzfeed.com', 'theatlantic.com', 'theguardian.com', 'msnbc.com', 'bloomberg.com', 'newyorker.com', 'vox.com', 'slate.com', 'reuters.com', 'therealnews.com', 'news.google.com', 'news.yahoo.com', 'wikinews.com', 'alternet.com', 'dailykos.com', 'independent.co.uk', 'time.com', 'pastemagazine.com'];
+
 // get information from news API
 newsOutput.getInfo = function() {
 	$.each(siteArray, function(i, site) {
@@ -58,44 +60,6 @@ newsOutput.displayNews = function(articles) {
           return article.thread.uuid;
         });
 	console.log(uniqueArticles);
-	// filter articles from certain sites
-	// var sitesToPullFrom = uniqueArticles.filter(function(val) {
-	// 	var safeSites = val.thread.site;
-	// 	if (safeSites == 'nytimes.com' ||
-	// 		safeSites == 'npr.org' ||
-	// 		safeSites == 'c-span.org' ||
-	// 		safeSites == 'economist.com' ||
-	// 		safeSites == 'wsj.com' ||
-	// 		safeSites == 'bbc.co.uk' ||
-	// 		safeSites == 'salon.com' ||
-	// 		safeSites == 'buzzfeed.com' ||
-	// 		safeSites == 'theatlantic.com' ||
-	// 		safeSites == 'huffingtonpost.com' ||
-	// 		safeSites == 'theguardian.com' ||
-	// 		safeSites == 'washingtonpost.com' ||
-	// 		safeSites == 'msnbc.com' ||
-	// 		safeSites == 'bloomberg.com' ||
-	// 		safeSites == 'newyorker.com' ||
-	// 		safeSites == 'vox.com' ||
-	// 		safeSites == 'slate.com' ||
-	// 		safeSites == 'reuters.com' ||
-	// 		safeSites == 'therealnews.com' ||
-	// 		safeSites == 'news.google.com' ||
-	// 		safeSites == 'news.yahoo.com' ||
-	// 		safeSites == 'wikinews.com' ||
-	// 		safeSites == 'alternet.com' ||
-	// 		safeSites == 'dailykos.com' ||
-	// 		safeSites == 'independent.co.uk' ||
-	// 		safeSites == 'time.com'
-	// 		) {
-	// 		return true;
-	// 	} else {
-	// 		return false;
-	// 	}
-	// 	console.log(safeSites);
-	// })
-	// console.log(sitesToPullFrom);
-
 	// call the articles!
 	$.each(uniqueArticles, function(i, piece) {
 		// console.log(piece);
