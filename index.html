@@ -3,27 +3,33 @@
 <head>
 	<meta charset="UTF-8">
 	<title>The Sanders Standard</title>
-	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="styles/main.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href='https://fonts.googleapis.com/css?family=UnifrakturCook:700' rel='stylesheet' type='text/css'>
 	<script src="https://use.typekit.net/hll1gob.js"></script>
 	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>
 <body>
 
-	<header>
-		<h1>The Sanders Standard</h1>
-		<h3>Giving America's Next President the Coverage He Deserves.</h3>
-	</header>
-	<div id="results" class="grid"></div>
-	
+	<div class="wrapper">
+		<header>
+			<div class="headerbox">
+				<div class="title">
+					<h3>The</h3>
+					<h1>Sanders Standard</h1>
+				</div>
+				<h3 class="tagline">Giving America's Next President the Media Coverage He Deserves.</h3>
+			</div>
+		</header>
+		<div id="results" class="grid"></div>
+	</div>
+
 	<footer>
-		<p class="credits">Brought to you by <a href="http://www.clareprowse.com">Blackout Media</a>, with help from the <a href="https://webhose.io/api">Webhose News API</a>.</p>
+		<p class="credits">Brought to you by <a href="http://www.prowselikemouse.com">Blackout Media</a>, with help from the <a href="https://webhose.io/api">Webhose News API</a>.</p>
 		<p class="campaign">Check out Bernie Sanders' Platform at <a href="https://go.berniesanders.com/">www.berniesanders.com</a></p>
 	</footer>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://underscorejs.org/underscore-min.js"></script>
 	<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>
-	<script src="scripts.js"></script>
+	<script src="scripts/bundle.js"></script>
 </body>
 </html>
