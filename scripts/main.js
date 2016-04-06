@@ -5,31 +5,36 @@ var newsOutput = {};
 newsOutput.apiKey = '6c929da4-9a43-4305-baee-d3f8d2717e3f';
 newsOutput.apiUrl = 'https://webhose.io/search';
 
-// call api multiple times in order to filter articles from these specific sites
-var siteArray = ['theintercept.com'];
+// CALL API MULTIPLE TIMES TO FILTER ARTICLES FROM THESE SPECIFIC SITES
+var siteArray = ['uk.reuters.com','theintercept.com'];
 
-// 'huffingtonpost.com', 'usuncut.com', 'npr.org', 'pbs.org', 'c-span.org', 'economist.com', 'bbc.co.uk', 'salon.com', 'buzzfeed.com', 'theatlantic.com', 'theguardian.com', 'msnbc.com', 'bloomberg.com', 'newyorker.com', 'vox.com', 'slate.com', 'reuters.com', 'therealnews.com', 'news.google.com', 'news.yahoo.com', 'wikinews.com', 'alternet.com', 'dailykos.com', 'independent.co.uk', 'time.com', 'pastemagazine.com', 'vice.com', 'currentaffairs.org', 
 
-//bring in only articles from news sites, NO blog posts!
+//  'usuncut.com', 'npr.org', 'pbs.org', 'c-span.org', 'economist.com', 'bbc.co.uk', 'salon.com', 'buzzfeed.com', 'theatlantic.com', 'theguardian.com', 'msnbc.com', 'bloomberg.com', 'newyorker.com', 'vox.com', 'slate.com', 'huffingtonpost.com', 'therealnews.com', 'news.google.com', 'news.yahoo.com', 'wikinews.com', 'alternet.com', 'dailykos.com', 'independent.co.uk', 'time.com', 'pastemagazine.com', 'vice.com', 'currentaffairs.org', 
 
-//bring in articles from the 
-// get information from news API
+newsOutput.imageArray = [
+	'images/bernie-sanders-portrait-01.jpg',
+	'images/bernie-sanders-portrait-02.jpg',
+	'images/bernie-sanders-portrait-03.jpg'
+];
+// GET INFO FROM WEBHOSE NEWS API
 newsOutput.getInfo = function () {
 	$.each(siteArray, function (i, site) {
+		// SPECIFY QUERY
+		var data = {
+				token: newsOutput.apiKey,
+				format: 'json',
+				q: 'Bernie Sanders "Bernie Sanders" thread.title:(Sanders)',
+				['thread.site_full']: site,
+				site_type: 'news',
+			}
 		$.ajax({
 			url: newsOutput.apiUrl,
 			method: 'GET',
 			dataType: 'json',
-			data: {
-				token: newsOutput.apiKey,
-				format: 'json',
-				q: 'Bernie Sanders "Bernie Sanders" thread.title:(Sanders)',
-				site: site
-			}
+			data: data
 		}).then(function (articles) {
-			console.log(articles);
 			var posts = articles.posts.reverse();
-			// call the displayNews function to display news
+			// CALL displayNews FUNCTION TO SHOW RESULTS
 			newsOutput.displayNews(posts);
 		});
 	});
@@ -37,9 +42,9 @@ newsOutput.getInfo = function () {
 
 
 
-// with that information, display it on the page
+// DISPLAY INFORMATION ON PAGE
 newsOutput.displayNews = function (articles) {
-	// make sure there are no duplicate articles
+	// WEED OUT DUPLICATE ARTICLES
 	var uniqueArticles = _.uniq(articles, false, function (article) {
 		return article.thread.title;
 	});
@@ -49,63 +54,45 @@ newsOutput.displayNews = function (articles) {
 	uniqueArticles = _.uniq(uniqueArticles, false, function (article) {
 		return article.thread.uuid;
 	});
-	console.log(uniqueArticles);
-	// call the articles!
+	// CALL ARTICLES
 	$.each(uniqueArticles, function (i, piece) {
-		// console.log(piece);
 		var date = new Date(piece.thread.published);
-		console.log(date);
 		var day = date.getDate();
-		console.log(day);
 		var month = date.getMonth() + 1;
-		console.log(month);
 		var year = date.getFullYear();
-		console.log(year);
 		var dateString = month + '/' + day + '/' + year;
-		var title = $('<h1>').addClass('articleTitle').text(piece.thread.title);
+		var title = $('<h1>').addClass('articleTitle').text(piece.thread.title)
+		var articleLink = $('<a>').attr("href", piece.thread.url).append(title);
 		var author = $('<h3>').addClass('articleAuthor').text(piece.thread.site_full);
+		var sourceLink = $('<a>').attr("href", piece.thread.site_section).append(author);
 		var date = $('<p>').addClass('articleDate').text(dateString);
-		// var imageUrl = $('<img>').attr('src', piece.thread.main_image);
-		// imageUrl.error(function () {
-		// 	$(this).attr('src', 'bernie-sanders-portrait-01.jpg')
-		// })
-		// if (piece.thread.main_image == null) {
-		// 	$(imageUrl).attr('src', 'bernie-sanders-portrait-01.jpg')
-		// }
-		// var imageDiv = $('<div>').append(imageUrl).addClass('imgContainer');
 		var imageUrl = piece.thread.main_image;
-		var imageTest = $('<img>').attr('src', piece.thread.main_image);
-		imageTest.error(function () {
-			$(article).css('background-image', 'url(' + 'images/bernie-sanders-portrait-01.jpg' + ')');
-		});
-		// var imageDiv = $('<div>').append(imageUrl).addClass('imgContainer');
-		var authorDate = $('<div>').append(author, date).addClass('authorDate');
-		var contentDiv = $('<div>').append(title, authorDate).addClass('contentDiv');
-		// if (imageUrl)
-		var articleLink = $('<a>').attr("href", piece.thread.url).addClass('grid-item');
-		var article = $('<article>').append(contentDiv).wrap(articleLink).parent().addClass('grid-item').appendTo('#results');
-		if (piece.thread.main_image == null) {
-			$(article).css('background-image', 'url(' + 'images/bernie-sanders-portrait-01.jpg' + ')');
-		} else {
-			$(article).css('background-image', 'url(' + imageUrl + ')');
-		}
-
-		//
-		// background image being called is the last in the images of the array that is produced
-		// $('#results').append(article);
+		if (!imageUrl) imageUrl = _.sample(newsOutput.imageArray);
+		var image = $('<img>').attr('src', imageUrl).addClass('articleImage');
+		var authorDate = $('<div>').append(sourceLink, date).addClass('authorDate');
+		var contentDiv = $('<div>').append(articleLink).append(authorDate).wrap(articleLink).addClass('contentDiv');
+		var article = $('<article>').append(contentDiv).append(image).addClass('grid-item');
+		// ADD ARTICLE TO MASONRY AND TELL MASONRY IT'S BEEN ADDED
+		newsOutput.$grid.append(article).masonry('appended', article);
 	});
-	// call masonry here
-	// $('.grid').masonry({
-	//   itemSelector: '.grid-item',
-	//   columnWidth: '.grid-item',
-	// });
+	$('.articleImage').error(function() {
+		$(this).attr('src', _.sample(newsOutput.imageArray));
+	});
+	newsOutput.$grid.imagesLoaded().progress( function() {
+	  newsOutput.$grid.masonry('layout');
+	});
 };
 
-newsOutput.init = function () {
+newsOutput.init = function() {
+	newsOutput.$grid = $('.grid').masonry({
+	  itemSelector: '.grid-item',
+	  columnWidth: '.grid-sizer',
+	  percentPosition: true
+	});
 	newsOutput.getInfo();
-	// newsOutput.displayNews();
 };
 
-$(function () {
+
+$(function() {
 	newsOutput.init();
 });

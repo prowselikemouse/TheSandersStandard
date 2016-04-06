@@ -10,26 +10,41 @@
 </head>
 <body>
 
-	<div class="wrapper">
-		<header>
-			<div class="headerbox">
-				<div class="title">
-					<h3>The</h3>
-					<h1>Sanders Standard</h1>
-				</div>
-				<h3 class="tagline">Giving America's Next President the Media Coverage He Deserves.</h3>
+	<aside>
+		<div class="header">
+			<div class="title">
+				<h3 class="the">The</h3>
+				<h1 class="sanders">Sanders</h1>
+				<h1 class="standard">Standard</h1>
 			</div>
-		</header>
-		<div id="results" class="grid"></div>
+			<h2 class="tagline">Giving America's Next President the Media Coverage He Deserves.</h2>
+		</div>
+		<div class="footer">
+			<p class="campaign">Check out Bernie Sanders' Platform at <a href="https://go.berniesanders.com/" target="blank">www.berniesanders.com</a></p>
+			<p class="credits">Brought to you by <a href="http://www.prowselikemouse.com" target="blank">Blackout Media</a>, with help from the <a href="https://webhose.io/api">Webhose News API</a>.</p>
+		</div>
+	</aside>
+	<div class="wrapper">
+		<div id="results" class="grid">
+			<div class="grid-sizer"></div>
+		</div>
+		<div class="splashPage">
+			<div class="bernie"></div>
+			<h2 class="loadingTag">Loading stories the mainstream media won't tell.</h2>
+		</div>
 	</div>
-
 	<footer>
-		<p class="credits">Brought to you by <a href="http://www.prowselikemouse.com">Blackout Media</a>, with help from the <a href="https://webhose.io/api">Webhose News API</a>.</p>
-		<p class="campaign">Check out Bernie Sanders' Platform at <a href="https://go.berniesanders.com/">www.berniesanders.com</a></p>
+			<div class="footerContent">
+				<p class="campaign">Check out Bernie Sanders' Platform at <a href="https://go.berniesanders.com/" target="blank">www.berniesanders.com</a></p>
+				<p class="credits">Brought to you by <a href="http://www.prowselikemouse.com" target="blank">Blackout Media</a>, with help from the <a href="https://webhose.io/api">Webhose News API</a>.</p>
+			</div>
 	</footer>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://underscorejs.org/underscore-min.js"></script>
-	<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>
+	<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+	<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js"></script>
 	<script src="scripts/bundle.js"></script>
 </body>
 </html>

@@ -2,8 +2,8 @@
 
 $titlefont: "le-monde-livre-std", serif;
 $bodyfont: "lemonde-sans",sans-serif;
-$bernieblue: rgba(9,11,100,0.7);
-$solidbernieblue: #585A9D;
+$bernieblue: #0f244f;
+$linkblue: #597ec9;
 
 html {
 	font-size: 62.5%;
@@ -17,45 +17,233 @@ a {
 	text-decoration: none;
 }
 
-.wrapper {
-	width: 97%;
-	margin: 0 auto;
-}
-.headerbox {
-	// text-align: center;
-	width: 300px;
+
+aside {
+	clear: both;
 	background-color: $bernieblue;
-	position: absolute;
-	left: 6rem;
 	color: white;
-	padding: 1rem 2rem;
 	margin: 0;
+	padding: 1rem 2rem;
+	position: fixed;
+	width: 20%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	font-family: $bodyfont;
+	color: white;
+	margin: 0;
+	a {
+		color: white;
+	}
+	p {
+		margin: 0;
+		padding-bottom: 1.4rem;
+	}
+}
+
+@media (max-width: 920px) {
+	aside {
+		height: auto;
+		width: 100%;
+		z-index: 100;
+		flex-direction: row;
+	}
+}
+@media (max-width: 700px) {
+	.header {
+		margin: 0 auto;
+	}
 }
 .title {
 	font-family: $titlefont;
 	font-style: italic;
-	font-weight: 200;
-	display: flex;
-	flex-direction: row;
-	margin-top: 4rem;
-	padding-bottom: 2rem;
+	width: 100%;
+	display: block;
+	padding-left: 0.6rem;
 	border-bottom: 1px solid white;
-	h3 {
-		font-size: 2.4rem;
-		margin: 0;
-		margin-top: 0.3rem;
-		margin-right: 0.4rem;
-	}	
 	h1 {
 		font-size: 5rem;
+		font-weight: 400;
 		padding: 0;
 		margin: 0;
 	}
 }
 
+@media (max-width: 1024px) {
+	.title {
+		padding-left: 0;
+	}
+}
+
+@media (max-width: 920px) {
+	.title {
+		display: flex;
+		flex-direction: row;
+		padding-top: 2rem;
+		margin-left: 0;
+		padding-left: 1rem;
+	}
+}
+@media (max-width: 700px) {
+	.title {
+		justify-content: center;
+	}
+}
+@media (max-width: 340px) {
+	.title {
+		padding-left: 0;
+	}
+}
+
+.the {
+	font-weight: 400;
+	font-size: 2.4rem;
+	margin: 0;
+	position: relative;
+	top: 3.2rem;
+}
+
+@media (max-width: 1200px) {
+	.the {
+		font-size: 2.2rem;
+	}
+}
+@media (max-width: 1024px) {
+	.the {
+		font-size: 2rem;
+		top: 2.8rem;
+	}
+}
+@media (max-width: 920px) {
+	.the {
+		font-size: 2.4rem;
+		top: 0.4rem;
+	}
+}
+@media (max-width: 455px) {
+	.the {
+		font-size: 2rem;
+		top: 0.2;
+	}
+}
+@media (max-width: 340px) {
+	.the {
+		font-size: 1.8rem;
+		top: 0.2;
+	}
+}
+h1.sanders {
+	position: relative;
+	left: 4rem;
+}
+
+@media (max-width: 1200px) {
+	h1.sanders {
+		font-size: 4.6rem;
+	}
+}
+@media (max-width: 1024px) {
+	h1.sanders {
+		font-size: 3.8rem;
+		left: 3.2rem;
+	}
+}
+@media (max-width: 920px) {
+	h1.sanders {
+		font-size: 5rem;
+		left: 0;
+	}
+}
+@media (max-width: 455px) {
+	h1.sanders {
+		font-size: 3.8rem;
+	}
+}
+@media (max-width: 340px) {
+	h1.sanders {
+		font-size: 3.4rem;
+	}
+}
+h1.standard {
+	position: relative;
+	top: -1rem;
+	left: 1rem;
+}
+@media (max-width: 1200px) {
+	h1.standard {
+		font-size: 4.6rem;
+	}
+}
+@media (max-width: 1024px) {
+	h1.standard {
+		font-size: 3.8rem;
+	}
+}
+@media (max-width: 920px) {
+	h1.standard {
+		font-size: 5rem;
+		left: 1rem;
+		top: 0;
+	}
+}
+@media (max-width: 455px) {
+	h1.standard {
+		font-size: 3.8rem;
+		left: 0;
+	}
+}
+@media (max-width: 340px) {
+	h1.standard {
+		font-size: 3.4rem;
+		left: 0.2rem;
+	}
+}
 .tagline {
 	font-family: $bodyfont;
-	font-size: 1.6rem;
+	font-size: 1.4rem;
+	font-weight: 400;
+}
+@media (max-width: 700px) {
+	.tagline {
+		text-align: center;
+	}
+}
+.footer {
+	font-size: 1.2rem;
+	a {
+		text-decoration: underline;
+		&:hover {
+			color: red;
+		}
+	}
+}
+@media (max-width: 920px) {
+	.footer {
+		display: none;
+	}
+}
+.wrapper {
+	width: 80%;
+	margin-left: 20%;
+	position: relative;
+}
+
+@media (max-width: 920px) {
+	.wrapper {
+		width: 100%;
+		margin-left: 0;
+		margin-top: 139.219px
+	}
+}
+@media (max-width: 920px) {
+	.wrapper {
+		width: 100%;
+		margin-left: 0;
+		margin-top: 136.219px
+	}
 }
 
 #results a {
@@ -67,37 +255,37 @@ a {
 	font-family: $bodyfont;
 }
 
-.grid {
-	display: flex;
-	flex-direction: row-wrap;
-}
-
 article {
 	position: relative;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	// padding: 17rem 2rem 1rem 2rem;
 	font-family: $bodyfont;
-	height: 35rem;
-	// width: 25%;
 }
 
-.grid:first-child article{
-	width: 100%;
-	height: 50rem;
-	.articleTitle {
-		font-size: 3.6rem;
+.grid-sizer,
+.grid-item {
+	width: 33.333333333%;
+}
+
+@media (max-width: 700px) {
+	.grid-sizer,
+	.grid-item {
+		width: 50%;
 	}
 }
-
+@media (max-width: 520px) {
+	.grid-sizer,
+	.grid-item {
+		width: 100%;
+	}
+}
 
 .contentDiv {
 	position: absolute;
 	color: #ffffff;
-	background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8),rgba(0,0,0,1));
+	background: linear-gradient(rgba(0,0,0,0), rgba(15,36,79,0.8),rgba(15,36,79,1));
 	padding: 1rem 2rem;
-	// width: 33.3333%;
 	bottom: 0rem;
 	left: 0rem;
 	right: 0rem;
@@ -106,12 +294,9 @@ article {
 .authorDate {
 	display: flex;
 	flex-direction: row;
-	margin: 1.6rem 0 2rem;
+	margin: 1rem 0;
 }
 
-.articleTitle {
-	font-size: 2rem;
-}
 
 .articleTitle, 
 .articleAuthor, 
@@ -121,28 +306,74 @@ article {
 		font-family: $bodyfont;
 }
 
+.articleTitle {
+	font-size: 2rem;
+	font-weight: 400;
+	color: white;
+	transition: all 3s ease;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
 .articleAuthor {
 		text-transform: uppercase;
-		color: $solidbernieblue;
+		color: $linkblue;
 		margin-right: 1rem;
+		&:hover {
+			// text-decoration: underline;
+			color: red;
+		}
+}
+
+.splashPage {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 100%;
+	color: red;
+	background-color: yellow;
+	z-index: -1;
 }
 
 footer {
-	clear: both;
-	background-color: $solidbernieblue;
-	color: white;
-	padding: 2rem;
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	font-family: $bodyfont;
-	a {
-		color: white;
+	font-size: 1.2rem;
+	background-color: $bernieblue;
+	color: white;
+	margin: 0;
+	padding: 1rem 2rem;
+	display: none;
+}
+@media (max-width: 920px) {
+	footer {
+		display: block;
 	}
-	p {
-		margin: 0;
-		padding-bottom: 1.4rem;
+}
+@media (max-width: 920px) {
+	.footerContent {
+		display: block;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		p {
+			margin: 0;
+		}
+		a {
+			text-decoration: underline;
+			color: $linkblue;
+		}
+	}
+}
+@media (max-width: 700px) {
+	.footerContent {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 1rem;
+		p {
+			margin-bottom: 1rem;
+		}
 	}
 }
