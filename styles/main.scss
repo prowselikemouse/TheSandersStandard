@@ -226,6 +226,18 @@ h1.standard {
 		display: none;
 	}
 }
+.socialTags {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+.twitter-share-button {
+	margin-right: 0.6rem;
+}
+.fb-share-button {
+	margin-left: 0.6rem;
+}
 .wrapper {
 	width: 80%;
 	margin-left: 20%;
@@ -339,8 +351,6 @@ article {
 	margin-left: 20%;
 	// position: relative;
 }
-
-
 @media (max-width: 920px) {
 	.splashPage {
 		width: 100%;
@@ -355,9 +365,9 @@ article {
 		margin-top: 136.219px
 	}
 }
-.bernie {
-	width: 40%;
+.splashGraphic {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
@@ -365,6 +375,11 @@ article {
 	left: 0;
 	right: 0;
 	margin: 0 auto;
+	
+}
+.bernie {
+	width: 40%;
+	position: relative;
 }
 
 @media (max-width: 1024px) {
@@ -375,38 +390,37 @@ article {
 }
 
 @media (max-width: 920px) {
-	.bernie {
-		width: 45%;
-		top: 2rem;
+	div.bernie {
+		width: 40%;
+		top: 0.6rem;
 	}
 }
-
 @media (max-width: 850px) {
-	.bernie {
+	div.bernie {
 		width: 50%;
 		top: 2rem;
 	}
 }
 @media (max-width: 700px) {
-	.bernie {
+	div.bernie {
 		width: 55%;
 		top: 2rem;
 	}
 }
 @media (max-width: 600px) {
-	.bernie {
+	div.bernie {
 		width: 55%;
 		top: 3rem;
 	}
 }
 @media (max-width: 520px) {
-	.bernie {
+	div.bernie {
 		width: 60%;
 		top: 2rem;
 	}
 }
 @media (max-width: 400px) {
-	.bernie {
+	div.bernie {
 		width: 75%;
 		top: 3rem;
 	}
@@ -417,6 +431,27 @@ article {
 		top: 3rem;
 	}
 }
+.loadingTag {
+	text-align: center;
+	color: $bernieblue;
+	background-color: white;
+	margin: 5.5rem 0;
+	padding: 1.2rem 1.4rem;
+	font-family: $bodyfont;
+	font-style: italic;
+	font-size: 3rem;
+}
+@media (max-width: 1024px) {
+	.loadingTag {
+		margin: 6rem 0;
+		padding: 1.6rem 1.4rem;
+	}
+}
+@media (max-width: 850px) {
+	.loadingTag {
+		display: none;
+	}
+}
 
 .redLine {
 	background-color: $americanred;
@@ -424,14 +459,6 @@ article {
 	height: 5rem;
 	margin-bottom: 5rem;
 }
-.loadingTag {
-	text-align: center;
-	color: $bernieblue;
-	font-family: $bodyfont;
-	font-style: italic;
-	font-size: 3rem;
-}
-
 
 footer {
 	font-family: $bodyfont;
@@ -455,14 +482,14 @@ footer {
 	.footerContent {
 		display: block;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		justify-content: space-between;
 		p {
-			margin: 0;
+			margin: 0.3rem 0;
 		}
 		a {
 			text-decoration: underline;
-			color: $linkblue;
+			color: white;
 		}
 	}
 }
@@ -473,7 +500,19 @@ footer {
 		align-items: center;
 		padding: 1rem;
 		p {
-			margin-bottom: 1rem;
+			margin-bottom: 0.8rem;
+			text-align: center;
 		}
+	}
+}
+
+@media (max-width: 920px) {
+	.socialTags {
+		margin-bottom: 0.5rem;
+	}
+}
+@media (max-width: 700px) {
+	.socialTags {
+		margin-bottom: 1rem;
 	}
 }

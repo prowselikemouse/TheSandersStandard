@@ -8,9 +8,9 @@ newsOutput.apiKey = '6c929da4-9a43-4305-baee-d3f8d2717e3f';
 newsOutput.apiUrl = 'https://webhose.io/search';
 
 // CALL API MULTIPLE TIMES TO FILTER ARTICLES FROM THESE SPECIFIC SITES
-var siteArray = ['uk.reuters.com', 'theintercept.com'];
+var siteArray = ['usuncut.com', 'npr.org', 'pbs.org', 'c-span.org', 'economist.com', 'bbc.co.uk', 'salon.com', 'buzzfeed.com', 'theatlantic.com', 'theguardian.com', 'msnbc.com', 'bloomberg.com', 'newyorker.com', 'vox.com', 'slate.com', 'huffingtonpost.com', 'therealnews.com', 'news.google.com', 'news.yahoo.com', 'wikinews.com', 'alternet.com', 'dailykos.com', 'independent.co.uk', 'time.com', 'pastemagazine.com', 'vice.com', 'currentaffairs.org', 'uk.reuters.com', 'theintercept.com'];
 
-//  'usuncut.com', 'npr.org', 'pbs.org', 'c-span.org', 'economist.com', 'bbc.co.uk', 'salon.com', 'buzzfeed.com', 'theatlantic.com', 'theguardian.com', 'msnbc.com', 'bloomberg.com', 'newyorker.com', 'vox.com', 'slate.com', 'huffingtonpost.com', 'therealnews.com', 'news.google.com', 'news.yahoo.com', 'wikinews.com', 'alternet.com', 'dailykos.com', 'independent.co.uk', 'time.com', 'pastemagazine.com', 'vice.com', 'currentaffairs.org',
+//
 
 newsOutput.imageArray = ['images/bernie-sanders-portrait-01.jpg', 'images/bernie-sanders-portrait-02.jpg', 'images/bernie-sanders-portrait-03.jpg'];
 // GET INFO FROM WEBHOSE NEWS API
@@ -86,6 +86,23 @@ newsOutput.init = function () {
 	});
 	newsOutput.getInfo();
 };
+
+!function (d, s, id) {
+	var js,
+	    fjs = d.getElementsByTagName(s)[0],
+	    p = /^http:/.test(d.location) ? 'http' : 'https';if (!d.getElementById(id)) {
+		js = d.createElement(s);js.id = id;js.src = p + '://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);
+	}
+}(document, 'script', 'twitter-wjs');
+
+(function (d, s, id) {
+	var js,
+	    fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s);js.id = id;
+	js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5";
+	fjs.parentNode.insertBefore(js, fjs);
+})(document, 'script', 'facebook-jssdk');
 
 $(function () {
 	newsOutput.init();
